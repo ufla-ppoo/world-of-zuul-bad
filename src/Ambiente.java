@@ -1,3 +1,5 @@
+import java.util.HashMap;
+
 /**
  * Classe Ambiente - um ambiente em um jogo adventure.
  *
@@ -13,12 +15,18 @@
  */
 public class Ambiente  {
     // descrição do ambiente
-    public String descricao;
+    private String descricao;
     // ambientes visinhos de acordo com a direção
-    public Ambiente saidaNorte;
-    public Ambiente saidaSul;
-    public Ambiente saidaLeste;
-    public Ambiente saidaOeste;
+    private HashMap<String, Ambiente> saidas;
+
+    /*
+     * Retorna o ambiente cuja saída é na direção passada
+     * 
+     * @param direcao A direção da saída
+     */
+    public Ambiente getSaida(String direcao) {
+        return saidas.get(direcao);
+    }
 
     /**
      * Cria um ambiente com a "descricao" passada. Inicialmente, ele não tem saidas. 
@@ -27,25 +35,19 @@ public class Ambiente  {
      */
     public Ambiente(String descricao)  {
         this.descricao = descricao;
+        saidas = new HashMap<>();
     }
 
     /**
-     * Define as saídas do ambiente. Cada direção ou leva a um outro ambiente ou é null 
-     * (indicando que não tem nenhuma saída para lá).
-     * @param norte A saída norte.
-     * @param leste A saída leste.
-     * @param sul A saída sul.
-     * @param oeste A saída oeste.
+     * Define uma saída do ambiente: uma direção leva a outro ambiente.
+     *
+     * @param direcao A direção da saída
+     * @param ambiente O ambiente que a direção leva
      */
-    public void ajustarSaidas(Ambiente norte, Ambiente leste, Ambiente sul, Ambiente oeste)  {
-        if(norte != null)
-            saidaNorte = norte;
-        if(leste != null)
-            saidaLeste = leste;
-        if(sul != null)
-            saidaSul = sul;
-        if(oeste != null)
-            saidaOeste = oeste;
+    public void ajustarSaida(String direcao, Ambiente ambiente)  {
+        if (ambiente != null) {
+            saidas.put(direcao, ambiente);
+        }
     }
 
     /**
@@ -53,6 +55,17 @@ public class Ambiente  {
      */
     public String getDescricao() {
         return descricao;
+    }
+
+    /*
+     * Retorna uma string com as direções de saída possíveis do ambiente
+     */
+    public String getTextoSaidas() {
+        String texto = "";
+        for (String direcao : saidas.keySet()) {
+            texto += direcao + " ";
+        }
+        return texto;
     }
 
 }
