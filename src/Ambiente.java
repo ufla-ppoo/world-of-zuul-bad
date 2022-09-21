@@ -14,7 +14,7 @@
 public class Ambiente  {
     // descrição do ambiente
     public String descricao;
-    // ambientes visinhos de acordo com a direção
+    // ambientes vizinhos de acordo com a direção
     public Ambiente saidaNorte;
     public Ambiente saidaSul;
     public Ambiente saidaLeste;
