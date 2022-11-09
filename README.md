@@ -30,7 +30,7 @@ Depois, no computador você deve alterar o código do **World of Zuul** da segui
 - Alterar o método `criarAmbientes` para criar o mapa que você planejou para seu jogo.
 - Teste seu jogo (por enquanto o jogador conseguirá apenas se movimentar no mapa).
 
-### Passo 2.2 - Remover duplicação de código
+### Passo 1.2 - Remover duplicação de código
 
 A implementação do nosso jogo possui duplicação de código, que é algo que sempre queremos evitar.
 Repare que tanto o método `imprimirBoasVindas`, quanto o método `irParaAmbiente` exibem informações sobre a localização atual.
@@ -46,7 +46,7 @@ Precisamos criar um método para executar a tarefa única de exibir as informaç
 
 - E depois basta chamá-lo dos dois lugares que precisam exibir a localização atual.
 
-### Passo 2.3 - Acoplamento e atributos públicos
+### Passo 1.3 - Acoplamento e atributos públicos
 
 O nosso jogo tem atributos públicos na classe `Ambiente`.
 Nós já sabemos que isso fere o conceito de encapsulamento.
@@ -57,7 +57,7 @@ Nós podemos melhorar o design do nosso código, e ainda facilitar alterações 
 
 Dica: veja o slide 27 da apresentação sobre Design de Classes.
 
-### Passo 2.4 - Design Baseado em Responsabilidade
+### Passo 1.4 - Design Baseado em Responsabilidade
 
 Suponha que queiramos acrescentar itens, ou monstros, ou outros jogadores em um ambiente, qual é o melhor lugar para acrescentá-los?
 
@@ -72,7 +72,7 @@ Para resolver isso, veja que basta criarmos um novo método na classe `Ambiente`
 
 - Dessa forma, futuras alterações na classe `Ambiente` alterariam esse novo método, e não mais a classe `Jogo`.
 
-### Passo 2.5 - Comando Observar
+### Passo 1.5 - Comando Observar
 
 Vamos acrescentar um novo um novo comando ao nosso jogo, chamado *observar*.
 Tal comando é muito simples, por enquanto, apenas exibe novamente a descrição do ambiente atual.
@@ -82,7 +82,7 @@ Mas o comando será ainda mais útil quando nosso jogo tiver itens. Ele poderia 
 
 Lembre-se de incluir o comando na classe `PalavrasComando` e alterar a classe `Jogo` para tratar o comando criado.
 
-### Passo 2.6 - Acoplamento Implícito
+### Passo 1.6 - Acoplamento Implícito
 
 O acoplamento implícito acontece quando uma classe depende de dados internos de outra, mas isso não é tão óbvio (não é algo que está explicitamente conectado, via código).
 
@@ -103,7 +103,7 @@ Mas, cuidado! Veja que atualmente a classe `Jogo` não tem uma referência para 
   - Seria melhor então criar um método na classe `Analisador` que faça a intermediação entre as outras duas classes.
   - Dessa forma, fazemos o que precisamos sem aumentar o acoplamento entre as classes.
 
-### Passo 2.7 - Divisão em Camadas
+### Passo 1.7 - Divisão em Camadas
 
 No passo anterior nós resolvemos o problema do acoplamento implícito, mas acabamos criando uma situação que fere a divisão em camadas.
 
@@ -195,7 +195,7 @@ Para isso, faça o seguinte:
 
 Jogue e teste suas alterações!
 
-### (Opcional) 2.4 - Bloqueando ambientes
+### (Opcional) Passo 2.4 - Bloqueando ambientes
 
 Vamos tratar neste passo o bloqueio dos ambientes de uma forma bem simples.
 A ideia é que apenas uma das saídas de um ambiente possa estar bloqueada (ou nenhuma delas).
@@ -228,7 +228,7 @@ No próximo passo veremos como usar um item para desbloquear a saída.
 
 Teste seu jogo!
 
-### (Opcional) 2.5 - Usando os itens
+### (Opcional) Passo 2.5 - Usando os itens
 
 Agora vamos realmente tornar os itens úteis, usando-os para desbloquear as saídas dos ambientes.
 A ideia é que o jogador possa digitar um comando *usar algo*, onde *algo* é o nome de um item que ele está carregando e que será usado no ambiente.
@@ -258,3 +258,38 @@ Para isso faça as seguintes alterações no código:
 
 Teste seu jogo!
 Você deve agora conseguir desbloquear a passagem que o jogador não tinha acesso :)
+
+### (Opcional) Passo 2.6 - Zerando o jogo
+
+Agora nosso jogo permite que o jogador não só caminhe entre os ambientes, como também pegue itens e desbloqueie passagens.
+Podemos então definir uma forma do jogador *zerar* o jogo.
+
+Neste passo você deve:
+
+- Fazer um mapa maior, com mais ambientes, itens e passagens bloqueadas.
+- Criar um objetivo no jogo, que faça sentido com seu tema.
+
+Algumas ideias de objetivo são:
+
+- Definir um ambiente final que é onde o jogador precisa chegar.
+- Criar um item especial a ser conquistado pelo jogador.
+- Enfim, alguma coisa que represente que o jogador conseguiu *finalizar* o jogo.
+
+### (Opcional) Passo 2.7 - Ideias para melhorar seu jogo
+
+Nós agora temos um jogo mais divertido que o **World of Zuul**, o que é muito bacana :)
+
+Mas com criatividade você pode fazer muito mais!
+Veja alguns exemplos abaixo *(obs.: se você fizer algum desses passos, coloque um comentário no cabeçalho da classe Jogo, indicando o que você fez)*.
+
+- Adicione alguma forma de limite de tempo ao seu jogo, e se o jogador não chegar no objetivo dentro do tempo, ele perde. O tempo não precisa ser real, pode ser o número de movimentos ou de comandos inseridos, por exemplo.
+- Implemente uma porta secreta em algum lugar (ou alguma outra forma de porta que você só possa cruzar uma vez).
+- Adicione um *beamer* ao seu jogo. O beamer memoriza o ambiente onde ele é iniciado e teletransporta o jogador para aquele ambiente quando ele é disparado. Para isso, você precisará tratar os comandos para *iniciar* e *disparar* o beamer. E o beamer em si poderia ser um item a ser encontrado pelo jogador.
+- Adicione personagens ao jogo. Eles são parecidos com os itens, mas quando o jogador encontra um personagem pela primeira vez ele diz alguma coisa (pode ser uma dica que ajude o jogador, por exemplo).
+- Adicione personagens que se movem. Eles são como os personagens comuns, mas toda vez que o jogador digita um comando, o personagem se move para um dos ambientes vizinhos.
+- Crie um sistema de pontuação que motive o jogador. Ele poderia ganhar pontos ao pegar itens especiais (estrelas ou moedas, por exemplo), ou ao desbloquear passagens, etc.
+- Crie inimigos e coloque-os nos ambientes. Crie então armas que podem ser coletadas e usadas para derrotar inimigos.
+- Crie um limite de peso para a mochila jogador de forma que ele não consiga carregar todos os itens. Para isso, permita que os ambientes tenham uma lista de itens e não apenas um. Além disso, será necessário permitir que o usuário largue itens nos ambientes.
+- Permita que os ambientes tenham mais saídas bloqueadas e não apenas uma. Uma boa solução seria criar uma classe para representar as saídas, assim você mantém a coesão no código.
+
+Enfim, agora sua criatividade é o limite :)
