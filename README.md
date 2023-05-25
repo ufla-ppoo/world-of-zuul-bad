@@ -72,6 +72,8 @@ Para resolver isso, veja que basta criarmos um novo método na classe `Ambiente`
 
 - Dessa forma, futuras alterações na classe `Ambiente` alterariam esse novo método, e não mais a classe `Jogo`.
 
+> Obs.: os itens serão acrescentados no jogo nos exercícios da Parte 2. Se, por acaso, quiser incluir monstros e personagens no jogo, é melhor deixar para fazer isso depois de tratar os itens, pois ficará mais claro como fazer a implementação.
+
 ### Passo 1.5 - Comando Observar
 
 Vamos acrescentar um novo um novo comando ao nosso jogo, chamado *observar*.
