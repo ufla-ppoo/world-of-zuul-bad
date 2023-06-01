@@ -68,7 +68,7 @@ Mas, para isso, nós precisaríamos alterar alguma outra classe?
 - Da forma como o código está, sim! A classe `Jogo` precisaria ser alterada, porque ela teria que chamar um método da classe `Ambiente` para poder exibir os itens ou monstros existentes no ambiente.
 - Isso é ruim, pois mostra que uma alteração em uma classe, está provocando alteração em outra classe  (mas essa responsabilidade deveria ser apenas da classe que realmente precisa ser alterada).
 
-Para resolver isso, veja que basta criarmos um novo método na classe `Ambiente` que retorne uma descrição mais completa do ambiente, incluindo possíveis itens e monstros (algo como `getDescricaoLonga` que fornecesse um texto descrevendo tudo que tem no ambiente).
+Para resolver isso, veja que basta criarmos um novo método na classe `Ambiente` que retorne uma descrição mais completa do ambiente, incluindo possíveis itens e monstros (algo como `descricaoLonga()` que fornecesse um texto descrevendo tudo que tem no ambiente).
 
 - Dessa forma, futuras alterações na classe `Ambiente` alterariam esse novo método, e não mais a classe `Jogo`.
 
