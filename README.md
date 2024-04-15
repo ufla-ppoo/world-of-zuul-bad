@@ -8,6 +8,8 @@ O código deste projeto foi traduzido e adaptado para uso nas aulas de Programa�
 Este é um projeto inicial utilizado nas aulas de Design de Classe.
 Ao longo das aulas os alunos alteram o código (veja passos abaixo) resolvendo escolhas ruins de design, e depois melhoram o jogo acrescentando novas funcionalidades.
 
+# Sugestões de Atividades
+
 ## Parte 1 - Alterações discutidas em aula
 
 ### Passo 1.1 - Definindo o tema do jogo
